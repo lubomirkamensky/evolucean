@@ -1,0 +1,42 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+#default_config:
+
+#automation:
+#cloud:
+config:
+frontend:
+#history:
+#logbook:
+#map:
+#mobile_app:
+person:
+#scene:
+#script:
+#ssdp:
+sun:
+system_health:
+updater:
+#zeroconf:
+#zone:
+input_boolean:
+input_datetime:
+input_text:
+input_number:
+input_select:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+zwave:
+  usb_path: /dev/ttyAMA0
