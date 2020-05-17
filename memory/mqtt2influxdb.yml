@@ -1,0 +1,347 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: node/fraxinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/carpinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: additive
+    topic: node/carpinus/push-button/-/event-count
+    fields: 
+      value: $.payload
+    tags:
+      quantity: event_count
+      subject: push
+      sensor: $.topic[1]
+
+  - measurement: nonadditive
+    topic: node/salix/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+      
+  - measurement: nonadditive
+    topic: node/salix/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/salix/lux-meter/0:0/illuminance
+    fields: 
+      value: $.payload
+    tags:
+      quantity: illuminance
+      sensor: $.topic[1]
+      subject: default
+      uom: 1lux
+
+  - measurement: nonadditive
+    topic: node/salix/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/ulmus/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/ulmus/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/ulmus/lux-meter/0:0/illuminance
+    fields: 
+      value: $.payload
+    tags:
+      quantity: illuminance
+      sensor: $.topic[1]
+      subject: default
+      uom: 1lux
+
+  - measurement: nonadditive
+    topic: node/ulmus/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/pinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: additive
+    topic: node/pinus/pir/-/event-count
+    fields: 
+      value: $.payload
+    tags:
+      quantity: event_count
+      subject: pir
+      sensor: $.topic[1]
+
+  - measurement: nonadditive
+    topic: node/quercus/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/quercus/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/quercus/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/quercus/co2-meter/-/concentration
+    fields: 
+      value: $.payload
+    tags:
+      quantity: concentration
+      subject: co2
+      sensor: $.topic[1]
+      uom: 1ppm
+
+  - measurement: nonadditive
+    topic: neurio/CONSUMPTION
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: total
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: neurio/PHASE_A_CONSUMPTION
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_A
+      sensor: $.topic[0]
+      uom: 1W   
+
+  - measurement: nonadditive
+    topic: neurio/PHASE_B_CONSUMPTION
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_B
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: neurio/PHASE_C_CONSUMPTION
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_C
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: futura/temp_ambient
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: ambient
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_fresh
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: fresh
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_indoor
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: indoor
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_waste
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: waste
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/rh_ambient
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: ambient
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_fresh
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: fresh
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_indoor
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: indoor
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_waste
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: waste
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/filter_wear_level
+    fields: 
+      value: $.payload
+    tags:
+      quantity: wear_level
+      subject: filter
+      sensor: $.topic[0]
+      uom: 1% 
+
+  - measurement: nonadditive
+    topic: futura/power_consumption
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: total
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: futura/heat_recovering
+    fields: 
+      value: $.payload
+    tags:
+      quantity: recovery
+      subject: heat
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: futura/air_flow
+    fields: 
+      value: $.payload
+    tags:
+      quantity: flow
+      subject: air
+      sensor: $.topic[0]
+      uom: m3/h 
+
+  - measurement: nonadditive
+    topic: node/+/battery/+/voltage
+    fields: 
+      value: $.payload
+    tags:
+      quantity: voltage
+      sensor: $.topic[1]
+      subject: default
+      uom: 1V
