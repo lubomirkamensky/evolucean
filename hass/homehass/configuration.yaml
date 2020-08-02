@@ -42,4 +42,4 @@ zwave:
   usb_path: /dev/ttyAMA0
 
 mqtt:
-  broker: 192.168.88.28
+  broker: 127.0.0.1
