@@ -5,7 +5,7 @@ mqtt:
 influxdb:
   host: 127.0.0.1
   port: 8086
-  database: landing
+  database: landing_neurio
 
 points:
   - measurement: nonadditive
