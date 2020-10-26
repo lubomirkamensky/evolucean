@@ -1,0 +1,129 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: futura/temp_ambient
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: ambient
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_fresh
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: fresh
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_indoor
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: indoor
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/temp_waste
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      subject: waste
+      sensor: $.topic[0]
+      uom: 0.1°C 
+
+  - measurement: nonadditive
+    topic: futura/rh_ambient
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: ambient
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_fresh
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: fresh
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_indoor
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: indoor
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/rh_waste
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      subject: waste
+      sensor: $.topic[0]
+      uom: 0.1% 
+
+  - measurement: nonadditive
+    topic: futura/filter_wear_level
+    fields: 
+      value: $.payload
+    tags:
+      quantity: wear_level
+      subject: filter
+      sensor: $.topic[0]
+      uom: 1% 
+
+  - measurement: nonadditive
+    topic: futura/power_consumption
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: total
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: futura/heat_recovering
+    fields: 
+      value: $.payload
+    tags:
+      quantity: recovery
+      subject: heat
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: futura/air_flow
+    fields: 
+      value: $.payload
+    tags:
+      quantity: flow
+      subject: air
+      sensor: $.topic[0]
+      uom: m3/h 

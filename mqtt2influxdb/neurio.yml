@@ -1,0 +1,50 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: neurio/CONSUMPTION
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: total
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: neurio/phase_a_consumption
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_A
+      sensor: $.topic[0]
+      uom: 1W   
+
+  - measurement: nonadditive
+    topic: neurio/phase_b_consumption
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_B
+      sensor: $.topic[0]
+      uom: 1W 
+
+  - measurement: nonadditive
+    topic: neurio/phase_c_consumption
+    fields: 
+      value: $.payload
+    tags:
+      quantity: consumption
+      subject: phase_C
+      sensor: $.topic[0]
+      uom: 1W 
+

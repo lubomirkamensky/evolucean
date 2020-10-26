@@ -1,0 +1,109 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: davis/temp_c
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: davis/hum
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: davis/dew_point_c
+    fields: 
+      value: $.payload
+    tags:
+      quantity: dew_point
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: davis/temp_in_c
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[0]
+      subject: studna
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: davis/hum_in
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[0]
+      subject: studna
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: davis/bar_sea_level_hpa
+    fields: 
+      value: $.payload
+    tags:
+      quantity: relative_pressure
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1hPa
+
+  - measurement: nonadditive
+    topic: davis/rainfall_year_mm
+    fields: 
+      value: $.payload
+    tags:
+      quantity: total_rainfall_year
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1mm
+
+  - measurement: nonadditive
+    topic: davis/wind_speed_hi_last_2_min_km_h
+    fields: 
+      value: $.payload
+    tags:
+      quantity: max_wind_speed_last_2_min
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1km/h
+
+  - measurement: nonadditive
+    topic: davis/wind_speed_avg_last_2_min_km_h
+    fields: 
+      value: $.payload
+    tags:
+      quantity: avg_wind_speed_last_2_min
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1km/h
+
+  - measurement: nonadditive
+    topic: davis/wind_dir_scalar_avg_last_2_min
+    fields: 
+      value: $.payload
+    tags:
+      quantity: avg_wind_direction_last_2_min
+      sensor: $.topic[0]
+      subject: outside
+      uom: 1°

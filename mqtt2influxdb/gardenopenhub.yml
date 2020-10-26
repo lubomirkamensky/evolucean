@@ -1,0 +1,29 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: gardenopenhub/studna/distance
+    fields: 
+      value: $.payload
+    tags:
+      quantity: water_level_distance
+      sensor: $.topic[0]
+      subject: $.topic[1]
+      uom: 1cm
+
+  - measurement: nonadditive
+    topic: gardenopenhub/studna/totalFlow
+    fields: 
+      value: $.payload
+    tags:
+      quantity: total_water_flow
+      sensor: $.topic[0]
+      subject: $.topic[1]
+      uom: 1l

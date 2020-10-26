@@ -1,0 +1,187 @@
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: landing
+
+points:
+  - measurement: nonadditive
+    topic: node/fraxinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/carpinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: additive
+    topic: node/carpinus/push-button/-/event-count
+    fields: 
+      value: $.payload
+    tags:
+      quantity: event_count
+      subject: push
+      sensor: $.topic[1]
+
+  - measurement: nonadditive
+    topic: node/salix/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+      
+  - measurement: nonadditive
+    topic: node/salix/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/salix/lux-meter/0:0/illuminance
+    fields: 
+      value: $.payload
+    tags:
+      quantity: illuminance
+      sensor: $.topic[1]
+      subject: default
+      uom: 1lux
+
+  - measurement: nonadditive
+    topic: node/salix/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/ulmus/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/ulmus/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/ulmus/lux-meter/0:0/illuminance
+    fields: 
+      value: $.payload
+    tags:
+      quantity: illuminance
+      sensor: $.topic[1]
+      subject: default
+      uom: 1lux
+
+  - measurement: nonadditive
+    topic: node/ulmus/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/pinus/thermometer/0:1/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: additive
+    topic: node/pinus/pir/-/event-count
+    fields: 
+      value: $.payload
+    tags:
+      quantity: event_count
+      subject: pir
+      sensor: $.topic[1]
+
+  - measurement: nonadditive
+    topic: node/quercus/thermometer/0:0/temperature
+    fields: 
+      value: $.payload
+    tags:
+      quantity: temperature
+      sensor: $.topic[1]
+      subject: default
+      uom: 1°C
+
+  - measurement: nonadditive
+    topic: node/quercus/hygrometer/0:4/relative-humidity
+    fields: 
+      value: $.payload
+    tags:
+      quantity: humidity
+      sensor: $.topic[1]
+      subject: default
+      uom: 1%
+
+  - measurement: nonadditive
+    topic: node/quercus/barometer/0:0/pressure
+    fields: 
+      value: $.payload
+    tags:
+      quantity: pressure
+      sensor: $.topic[1]
+      subject: default
+      uom: 1kPa
+
+  - measurement: nonadditive
+    topic: node/quercus/co2-meter/-/concentration
+    fields: 
+      value: $.payload
+    tags:
+      quantity: concentration
+      subject: co2
+      sensor: $.topic[1]
+      uom: 1ppm
+
+  - measurement: nonadditive
+    topic: node/+/battery/+/voltage
+    fields: 
+      value: $.payload
+    tags:
+      quantity: voltage
+      sensor: $.topic[1]
+      subject: default
+      uom: 1V
