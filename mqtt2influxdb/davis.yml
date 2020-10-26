@@ -83,7 +83,7 @@ points:
     fields: 
       value: $.payload
     tags:
-      quantity: max_wind_speed_last_2_min
+      quantity: max_wind_speed_2_min
       sensor: $.topic[0]
       subject: outside
       uom: 1km/h
@@ -93,7 +93,7 @@ points:
     fields: 
       value: $.payload
     tags:
-      quantity: avg_wind_speed_last_2_min
+      quantity: avg_wind_speed_2_min
       sensor: $.topic[0]
       subject: outside
       uom: 1km/h
@@ -103,7 +103,7 @@ points:
     fields: 
       value: $.payload
     tags:
-      quantity: avg_wind_direction_last_2_min
+      quantity: avg_wind_dir_2_min
       sensor: $.topic[0]
       subject: outside
       uom: 1°
