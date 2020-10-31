@@ -6,6 +6,7 @@
   device_class: temperature
   value_template: '{{value|round(2)}}'
   unit_of_measurement: '°C'
+### MQTT - jsn-sr04t #########################################
 - platform: mqtt
   name: 'Water level (Studna)'
   state_topic: 'gardenopenhub/studna/distance'
