@@ -5,10 +5,6 @@ port: 8086
 token: ItrwyXiKgk466yjM5sTz1cBpI8KeWA026aeMBiPhMCqKNdPB3b3vXLlCA0l0sagEnHtpPBUijMbjLtji7V0EXQ==
 organization: 5097bfc774730c98
 bucket: memory
-tags:
-  source: HA
-tags_attributes:
-  - friendly_name
 default_measurement: units
 exclude:
   entities:
