@@ -1,0 +1,86 @@
+1. Download image https://downloads.raspberrypi.org/raspbian_lite_latest
+2. use balenaEtcher
+3. create empty file named ssh on SD card
+4. create file wpa_supplicant.conf AS
+country=CZ # Your 2-digit country code
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+network={
+    ssid="YOUR_NETWORK_NAME"
+    psk="YOUR_PASSWORD"
+    key_mgmt=WPA-PSK
+}
+
+5. insert to S slot, ethernet, power, hdmi monitor
+6. sudo timedatectl set-timezone Europe/Prague
+7. sudo passwd pi
+8. sudo apt update & sudo apt upgrade
+9. sudo nano /boot/config.txt
+   hdmi_force_hotplug=1
+   dtoverlay=rpi-sense
+10. sudo raspi-config
+   Interface options - enable I2C
+   System options - host
+11. sudo apt install git
+12. upgrade Python3 - https://linuxize.com/post/how-to-install-python-3-8-on-debian-10/
+13. install HA - https://www.home-assistant.io/docs/installation/raspberry-pi/
+14. git clone https://github.com/lubomirkamensky/evolucean.git
+15. exit
+16. sudo nano -w /etc/systemd/system/home-assistant@homeassistant.service
+
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/srv/homeassistant/evolucean/hass/memory
+ExecStart=/srv/homeassistant/bin/hass -c "/srv/homeassistant/evolucean/hass/memory"
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+
+17. sudo systemctl --system daemon-reload
+    sudo systemctl enable home-assistant@homeassistant.service
+    sudo systemctl start home-assistant@homeassistant.service
+    sudo systemctl status home-assistant@homeassistant.service
+
+18. sudo apt install python3 python3-pip python3-setuptools
+    sudo pip3 install --upgrade pip
+    sudo apt install nodejs npm
+    sudo npm install -g pm2
+    sudo -H PM2_HOME=/home/$(whoami)/.pm2 pm2 startup systemd -u $(whoami)
+    sudo -H chmod 644 /etc/systemd/system/pm2-$(whoami).service
+    cd ~
+    sudo chown -R pi .
+    pm2 list
+
+19. sudo apt install mosquitto mosquitto-clients
+
+---------------------------------------MEMORY ONLY
+20. sudo nano /etc/mosquitto/conf.d/memory.conf
+connection cloudmqtt
+address *****.cloudmqtt.com:****
+remote_username *****
+remote_password *****
+clientid memory1
+local_clientid memory1
+start_type automatic
+topic # both 0
+keepalive_interval 300
+cleansession true
+bridge_protocol_version mqttv311
+bridge_cafile /etc/ssl/certs/ca-certificates.crt
+bridge_insecure false
+21. ADD SSD DRIVE
+    sudo fdisk -l
+    sudo mkfs.ext3 /dev/sda1
+    sudo mkdir /data
+    sudo mount /dev/sda1 /data
+    sudo nano /etc/fstab
+    add one line as: 
+    /dev/sda1 /data ext3 defaults 1 2
+
+22. sudo apt-get install sense-hat
