@@ -33,6 +33,39 @@ input_select:
 tts:
   - platform: google_translate
 
+mqtt:
+  broker: 127.0.0.1
+
+cloud:
+
+influxdb:
+  api_version: 2
+  ssl: false
+  host: 192.168.88.28
+  port: 8086
+  token: ItrwyXiKgk466yjM5sTz1cBpI8KeWA026aeMBiPhMCqKNdPB3b3vXLlCA0l0sagEnHtpPBUijMbjLtji7V0EXQ==
+  organization: 5097bfc774730c98
+  bucket: memory
+  tags:
+    source: HA
+  tags_attributes:
+    - friendly_name
+  default_measurement: units
+  exclude:
+    entities:
+      - zone.home
+      - binary_sensor.updater
+    domains:
+      - persistent_notification
+      - person
+      - weather
+      - sun
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+
+sensor: !include sensor.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

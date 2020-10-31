@@ -1,0 +1,13 @@
+### sensor.yaml
+### MQTT - DAVIS #############################################
+- platform: mqtt
+  name: 'Outdoor Temperature (Davis)'
+  state_topic: 'davis/temp_c'
+  device_class: temperature
+  value_template: '{{value|round(0)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Water level (Studna)'
+  state_topic: 'gardenopenhub/studna/distance'
+  value_template: '{{(400 - value|float)|round(1)}}'
+  unit_of_measurement: 'cm'
