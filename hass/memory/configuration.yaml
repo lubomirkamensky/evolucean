@@ -36,8 +36,6 @@ tts:
 mqtt:
   broker: 127.0.0.1
 
-cloud:
-
 influxdb: !include influxdb/influxdb.yaml
 sensor: !include_dir_merge_list sensor/
 group: !include groups.yaml
