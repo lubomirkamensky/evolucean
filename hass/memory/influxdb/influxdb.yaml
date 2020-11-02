@@ -1,0 +1,21 @@
+api_version: 2
+ssl: false
+host: 192.168.88.28
+port: 8086
+token: !secret token
+organization: !secret organization
+bucket: memory
+default_measurement: units
+exclude:
+  entities:
+    - zone.home
+    - binary_sensor.updater
+  domains:
+    - persistent_notification
+    - person
+    - weather
+    - sun
+include:
+  domains:
+    - sensor
+    - binary_sensor
