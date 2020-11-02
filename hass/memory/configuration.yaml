@@ -38,8 +38,8 @@ mqtt:
 
 cloud:
 
-influxdb: !include influxdb.yaml
-sensor: !include sensor.yaml
+influxdb: !include influxdb/influxdb.yaml
+sensor: !include_dir_merge_list sensor/
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
