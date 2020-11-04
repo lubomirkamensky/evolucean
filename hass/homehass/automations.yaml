@@ -32,6 +32,18 @@
     data:
       topic: homehub/vchod/motion
       payload: 'on'
+- id: '1566056999920'
+  alias: PIR Vchod to MQTT
+  trigger:
+  - entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    platform: state
+    to: '0'
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      topic: homehub/vchod/motion
+      payload: 'off'
 - id: '1566150599718'
   alias: MQTT zasuvka 2 zapnuti
   trigger:
