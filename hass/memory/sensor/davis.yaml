@@ -1,0 +1,73 @@
+### davis.yaml
+
+### sensor classes #####################################
+# None: Generic sensor. This is the default and doesn’t need to be set.
+# battery: Percentage of battery that is left.
+# humidity: Percentage of humidity in the air.
+# illuminance: The current light level in lx or lm.
+# signal_strength: Signal strength in dB or dBm.
+# temperature: Temperature in °C or °F.
+# power: Power in W or kW.
+# pressure: Pressure in hPa or mbar.
+# timestamp: Datetime object or timestamp string.
+# current: Current in A.
+# energy: Energy in Wh or kWh.
+# power_factor: Power Factor in %.
+# voltage: Voltage in V.
+
+- platform: mqtt
+  name: 'Outdoor Temperature (Davis)'
+  state_topic: 'davis/temp_c'
+  device_class: temperature
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Gardenhouse Temperature (Davis)'
+  state_topic: 'davis/temp_in_c'
+  device_class: temperature
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Dew point (Davis)'
+  state_topic: 'davis/dew_point_c'
+  device_class: temperature
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Outdoor humidity (Davis)'
+  state_topic: 'davis/hum'
+  device_class: humidity
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '%'  
+- platform: mqtt
+  name: 'Gardenhouse humidity (Davis)'
+  state_topic: 'davis/hum_in'
+  device_class: humidity
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '%'  
+- platform: mqtt
+  name: 'Wind speed 2 min AVG (Davis)'
+  state_topic: 'davis/wind_speed_avg_last_2_min_km_h'
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: 'km/h' 
+- platform: mqtt
+  name: 'Wind speed 2 min MAX (Davis)'
+  state_topic: 'davis/wind_speed_hi_last_2_min_km_h'
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: 'km/h' 
+- platform: mqtt
+  name: 'Wind direction (Davis)'
+  state_topic: 'davis/wind_dir_scalar_avg_last_2_min'
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: '°' 
+- platform: mqtt
+  name: 'Rain fall Yearly SUM (Davis)'
+  state_topic: 'davis/rainfall_year_mm'
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: 'mm' 
+- platform: mqtt
+  name: 'Relative Pressure (Davis)'
+  state_topic: 'davis/bar_sea_level_hpa'
+  device_class: pressure
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: 'hPa' 

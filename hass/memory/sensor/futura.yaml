@@ -1,0 +1,93 @@
+### futura.yaml
+
+### sensor classes #####################################
+# None: Generic sensor. This is the default and doesn’t need to be set.
+# battery: Percentage of battery that is left.
+# humidity: Percentage of humidity in the air.
+# illuminance: The current light level in lx or lm.
+# signal_strength: Signal strength in dB or dBm.
+# temperature: Temperature in °C or °F.
+# power: Power in W or kW.
+# pressure: Pressure in hPa or mbar.
+# timestamp: Datetime object or timestamp string.
+# current: Current in A.
+# energy: Energy in Wh or kWh.
+# power_factor: Power Factor in %.
+# voltage: Voltage in V.
+
+- platform: mqtt
+  name: 'Filter wear level (Futura)'
+  state_topic: 'futura/filter_wear_level'
+  value_template: '{{value}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Ventilation level (Futura)'
+  state_topic: 'futura/fventilation'
+  value_template: '{{value}}'
+  unit_of_measurement: 'level'
+- platform: mqtt
+  name: 'Outdoor Temperature (Futura)'
+  state_topic: 'futura/temp_ambient'
+  device_class: temperature
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Fresh Temperature (Futura)'
+  state_topic: 'futura/temp_fresh'
+  device_class: temperature
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Indoor Temperature (Futura)'
+  state_topic: 'futura/temp_indoor'
+  device_class: temperature
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Waste Temperature (Futura)'
+  state_topic: 'futura/temp_waste'
+  device_class: temperature
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Outdoor Humidity (Futura)'
+  state_topic: 'futura/rh_ambient'
+  device_class: humidity
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Fresh Humidity (Futura)'
+  state_topic: 'futura/rh_fresh'
+  device_class: humidity
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Fresh Humidity (Futura)'
+  state_topic: 'futura/rh_fresh'
+  device_class: humidity
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Indoor Humidity (Futura)'
+  state_topic: 'futura/rh_indoor'
+  device_class: humidity
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Waste Humidity (Futura)'
+  state_topic: 'futura/rh_waste'
+  device_class: humidity
+  value_template: '{{value/10|round(2)}}'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: 'Power (Futura)'
+  state_topic: 'futura/power_consumption'
+  device_class: power
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: 'W'
+- platform: mqtt
+  name: 'Recovered Power (Futura)'
+  state_topic: 'futura/heat_recovering'
+  device_class: power
+  value_template: '{{value|round(2)}}'
+  unit_of_measurement: W'

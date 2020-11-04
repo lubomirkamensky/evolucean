@@ -1,0 +1,41 @@
+### hardwario.yaml
+
+### sensor classes #####################################
+# None: Generic sensor. This is the default and doesn’t need to be set.
+# battery: Percentage of battery that is left.
+# humidity: Percentage of humidity in the air.
+# illuminance: The current light level in lx or lm.
+# signal_strength: Signal strength in dB or dBm.
+# temperature: Temperature in °C or °F.
+# power: Power in W or kW.
+# pressure: Pressure in hPa or mbar.
+# timestamp: Datetime object or timestamp string.
+# current: Current in A.
+# energy: Energy in Wh or kWh.
+# power_factor: Power Factor in %.
+# voltage: Voltage in V.
+
+- platform: mqtt
+  name: 'Home bell ring'
+  state_topic: 'node/carpinus/push-button/-/event-count'
+  value_template: '{{value}}'
+  unit_of_measurement: 'count'
+- platform: mqtt
+  name: 'Terrarium temperature'
+  state_topic: 'node/ulmus/thermometer/0:0/temperature'
+  value_template: '{{value}}'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  name: 'Terrarium illuminance'
+  state_topic: 'node/ulmus/lux-meter/0:0/illuminance'
+  value_template: '{{value}}'
+  unit_of_measurement: 'lux'
+- platform: mqtt
+  name: 'Terrarium humidity'
+  state_topic: 'node/ulmus/hygrometer/0:4/relative-humidity'
+  value_template: '{{value}}'
+  unit_of_measurement: '%'
+
+
+
+
