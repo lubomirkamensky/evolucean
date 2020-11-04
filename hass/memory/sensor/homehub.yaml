@@ -16,11 +16,6 @@
 # voltage: Voltage in V.
 
 - platform: mqtt
-  name: 'Home bell ring'
-  state_topic: 'node/carpinus/push-button/-/event-count'
-  value_template: '{{value}}'
-  unit_of_measurement: 'count'
-- platform: mqtt
   name: 'Terarrium Ligt Power'
   state_topic: 'homehub/zasuvka2/power'
   device_class: power
