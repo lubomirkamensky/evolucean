@@ -6,3 +6,8 @@
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 known_devices.yaml
+*.xml
+*.txt
+*.log
+*.sqlite
+.HA_VERSION
