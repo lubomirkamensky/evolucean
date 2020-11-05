@@ -71,7 +71,6 @@ WantedBy=multi-user.target
 
 19. sudo apt install mosquitto mosquitto-clients
 
-
 20. sudo nano /etc/mosquitto/mosquitto.conf
     replace /etc/mosquitto/conf.d with /home/pi/evolucean/mosquitto/evolucean 
 
@@ -80,6 +79,7 @@ WantedBy=multi-user.target
     nebo /srv/homeassistant/evolucean/mosquitto/memory
 
 
+20b. sudo systemctl restart mosquitto
 
 ---------------------------------------MEMORY ONLY
 21. ADD SSD DRIVE
