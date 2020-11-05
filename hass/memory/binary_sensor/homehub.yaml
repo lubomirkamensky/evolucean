@@ -39,5 +39,6 @@
 - platform: mqtt
   name: Home Entrance Movement
   state_topic: "homehub/vchod/motion"
+  sensor_class: motion
   payload_on: "on"
   payload_off: "off"

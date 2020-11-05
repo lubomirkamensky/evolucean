@@ -39,4 +39,4 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 zwave:
-  usb_path: /dev/ttyS0
+  usb_path: /dev/ttyAMA0
