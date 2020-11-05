@@ -71,21 +71,17 @@ WantedBy=multi-user.target
 
 19. sudo apt install mosquitto mosquitto-clients
 
+
+20. sudo nano /etc/mosquitto/mosquitto.conf
+    replace /etc/mosquitto/conf.d with /home/pi/evolucean/mosquitto/evolucean 
+
+    nebo /srv/homeassistant/evolucean/mosquitto/evolucean
+
+    nebo /srv/homeassistant/evolucean/mosquitto/memory
+
+
+
 ---------------------------------------MEMORY ONLY
-20. sudo nano /etc/mosquitto/conf.d/memory.conf
-connection cloudmqtt
-address *****.cloudmqtt.com:****
-remote_username *****
-remote_password *****
-clientid memory1
-local_clientid memory1
-start_type automatic
-topic # both 0
-keepalive_interval 300
-cleansession true
-bridge_protocol_version mqttv311
-bridge_cafile /etc/ssl/certs/ca-certificates.crt
-bridge_insecure false
 21. ADD SSD DRIVE
     sudo fdisk -l
     sudo mkfs.ext3 /dev/sda1
