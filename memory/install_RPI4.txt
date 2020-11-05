@@ -15,8 +15,19 @@ network={
 7. sudo passwd pi
 8. sudo apt update & sudo apt upgrade
 9. sudo nano /boot/config.txt
+   hdmi_group=1
+   hdmi_mode=16
+   config_hdmi_boost=8
    hdmi_force_hotplug=1
+
    dtoverlay=rpi-sense
+   dtoverlay=disable-bt
+   enable_uart=1
+
+   !!!!comment out:
+   # dtoverlay=vc4-fkms-v3d
+   # max_framebuffers=2
+
 10. sudo raspi-config
    Interface options - enable I2C
    System options - host
@@ -24,6 +35,7 @@ network={
 12. upgrade Python3 - https://linuxize.com/post/how-to-install-python-3-8-on-debian-10/
 13. install HA - https://www.home-assistant.io/docs/installation/raspberry-pi/
 14. git clone https://github.com/lubomirkamensky/evolucean.git
+14b. work/git-crypt.txt
 15. exit
 16. sudo nano -w /etc/systemd/system/home-assistant@homeassistant.service
 
