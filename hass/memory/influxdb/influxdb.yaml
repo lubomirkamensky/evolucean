@@ -1,6 +1,6 @@
 api_version: 2
 ssl: false
-host: 192.168.88.28
+host: 192.168.88.134
 port: 8086
 token: !secret token
 organization: !secret organization
