@@ -40,4 +40,5 @@ scene: !include scenes.yaml
 
 zwave:
   usb_path: /dev/ttyAMA0
+  autoheal: "False"
   device_config: !include zwave_device_config.yaml
