@@ -15,21 +15,21 @@ difference() {
 		difference() {
 			//cylinder(d = total_diameter, h = total_height);
 			rounded_cylinder(r=total_diameter/2,h=total_height,n=1);
+
 			translate([0, 0, base_thickness]) 
 				cylinder(d = total_diameter-(total_height-base_thickness)
 	                   , h = total_height-base_thickness+fudge);
 		}
+		cylinder(d=total_diameter,h=3);
 		for (i=hole_array) {
 			translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, 0])
 			pillar(hole_diameter,total_height,fudge);
 		}
-		rotate([0,0,90]) translate([0,0,total_height]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " evolucean.com", 5, 90);
-		rotate([0,0,270]) translate([0,0,total_height]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " lubolab.com", 5, 90);
 
 	}
 	for (i=hole_array) {
 		translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, -1*fudge])
-		cylinder(d = 4*hole_diameter, h = base_thickness+2*fudge);
+		cylinder(d1 = 4*hole_diameter,d2=2*hole_diameter+fudge, h = base_thickness+2*fudge);
 	}
     for (i = [0:12:360]) {
     	rotate([0, 0, i]) sensor(sensor_diameter,total_height,base_thickness);
@@ -47,6 +47,9 @@ difference() {
     	rotate([0, 0, i[0]])
     		translate([0, 2*total_height+i[1], -1*fudge])	
     			cylinder(d = 3*hole_diameter, h = base_thickness+2*fudge);
+    
+    rotate([0,0,90]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " evolucean.com", 5, 90);
+	rotate([0,0,270]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " lubolab.com", 5, 90);
     }
 }	
 
@@ -54,8 +57,9 @@ module pillar(hole_diameter,total_height,fudge) {
 	difference() {
 		rounded_cylinder(r=3*hole_diameter, h=total_height, n=1);
 		cylinder(d = 2*hole_diameter+fudge, h = total_height-(hole_diameter+fudge/2));
-		cylinder(d = hole_diameter+fudge/2, h = total_height+fudge);
-	}
+		translate([0, 0, total_height-(hole_diameter+fudge*0.6)]) 
+			cylinder(d1= 2*hole_diameter+fudge,d2 = hole_diameter+fudge/2, h = hole_diameter+fudge*0.7);
+	}  
 }
 
 module sensor(sensor_diameter,total_height,base_thickness) {
@@ -63,7 +67,7 @@ module sensor(sensor_diameter,total_height,base_thickness) {
 		rotate([90, 0, 0]) 
 			union() {
 			cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/2, h = (total_height-base_thickness)/2+2*fudge);
-			fillet_cylinder((sensor_diameter-fudge/2)/2,(total_height-base_thickness)/2+2*fudge,4,0);
+			fillet_cylinder((sensor_diameter-fudge/2)/2,(total_height-base_thickness)/2+2*fudge,4,3);
 		   }
 }
 
@@ -75,9 +79,9 @@ module revolve_text(radius, chars, font_size, angle) {
     for(i = [0 : chars_len - 1]) {
         rotate(-i * step_angle) 
             translate([0, radius + font_size / 2, 0]) 
-                linear_extrude(1) text(
+                linear_extrude(2) text(
                     chars[i], 
-                    font = "Courier New; Style = Bold", 
+                    font = "Arial; Style = Bold", 
                     size = font_size, 
                     valign = "center", halign = "center"
                 );
