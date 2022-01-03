@@ -9,6 +9,8 @@ fudge = 1;
 $fn = 128;
 hole_array = [[1,1],[-1,1],[1,-1],[-1,-1]];
 correction = 0;
+covering_holder_width = 2;
+covering_holder_length = 9;
 
 difference() {
 	union() {
@@ -25,13 +27,15 @@ difference() {
 			translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, 0])
 			pillar(hole_diameter,total_height,fudge);
 		}
-
+        for (i = [36,144,216,324]) {
+    		rotate([0, 0, i]) covering_holder(total_diameter,total_height,base_thickness,covering_holder_width,covering_holder_length);
+    	}
 	}
 	for (i=hole_array) {
 		translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, -1*fudge])
 		cylinder(d1 = 4*hole_diameter,d2=2*hole_diameter+fudge, h = base_thickness+2*fudge);
 	}
-    for (i = [0:12:360]) {
+    for (i = [12,24,48,60,72,84,96,108,120,132,156,204,228,240,252,264,276,288,300,312,336,348,360]) {
     	rotate([0, 0, i]) sensor(sensor_diameter,total_height,base_thickness);
     }
     translate([0, 0, total_height]) 
@@ -71,6 +75,16 @@ module sensor(sensor_diameter,total_height,base_thickness) {
 			cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/2, h = (total_height-base_thickness)/2+2*fudge);
 			//fillet_cylinder((sensor_diameter-fudge/2)/2,(total_height-base_thickness)/2+2*fudge,4,3);
 		   }
+}
+
+module covering_holder(total_diameter,total_height,base_thickness,covering_holder_width,covering_holder_length) {
+		union() {
+		translate([0, (total_diameter+covering_holder_length)/2-fudge, (total_height)/4])
+			cube([covering_holder_width,covering_holder_length,total_height/2],center = true);
+		translate([0, (total_diameter+covering_holder_length)/2-fudge, (total_height)/2])
+			rotate([90, 0, 0])
+				cylinder(d=3*covering_holder_width,h=covering_holder_length,center = true);
+		}
 }
 
 module revolve_text(radius, chars, font_size, angle) {
