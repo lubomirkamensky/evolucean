@@ -13,7 +13,9 @@ hull() {
 		}
 		scale([1, 1, (2*sphere_height)/total_diameter])
 			sphere(d = total_diameter);
-		rounded_cylinder(r=cylinder_height,h=cylinder_height*3/4,n=4);
+		//rounded_cylinder(r=cylinder_height,h=cylinder_height*3/4,n=4);
+		scale([1, 1, 2/3])
+			sphere(d = total_diameter*3/4);
 
 }
 translate([0, 0, total_diameter/2]) 
