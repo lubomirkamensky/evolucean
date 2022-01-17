@@ -8,6 +8,12 @@ use <dimple.scad>
 
 $fn=101;
 
+//socket();
+
+//ball();
+
+ball_joint();
+
 module socket_wall(diameter, wall_thickness, opening_angle) {
     r = diameter / 2;
     //radius for rounding is just under half of wall thickness because the rounding module can over-optimize when walls are less than 2*r
@@ -156,4 +162,3 @@ module ball_joint(
     }
 }
 
-ball_joint();

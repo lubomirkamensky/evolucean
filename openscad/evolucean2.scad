@@ -61,9 +61,9 @@ difference() {
 
 module pillar(hole_diameter,total_height,fudge) {
 	difference() {
-		rounded_cylinder(r=3*hole_diameter, h=total_height, n=1);
-		cylinder(d = 2*hole_diameter+fudge, h = total_height-(2*hole_diameter+fudge/2));
-		translate([0, 0, total_height-(2*hole_diameter+fudge*0.6)]) 
+		rounded_cylinder(r=3*hole_diameter, h=total_height-5, n=1);
+		cylinder(d = 2*hole_diameter+fudge, h = (total_height-5)-(2*hole_diameter+fudge/2));
+		translate([0, 0, (total_height-5)-(2*hole_diameter+fudge*0.6)]) 
 			cylinder(d1= 2*hole_diameter+fudge,d2 = hole_diameter+fudge/2, h = 2*hole_diameter+fudge*0.7);
 	}  
 }
