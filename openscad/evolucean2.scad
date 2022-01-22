@@ -16,7 +16,7 @@ difference() {
 	union() {
 		difference() {
 			//cylinder(d = total_diameter, h = total_height);
-			rounded_cylinder(r=total_diameter/2,h=total_height,n=1);
+			cylinder(r=total_diameter/2,h=total_height/2);
 
 			translate([0, 0, base_thickness]) 
 				cylinder(d = total_diameter-(total_height-base_thickness)
@@ -30,13 +30,20 @@ difference() {
         for (i = [36,144,216,324]) {
     		rotate([0, 0, i]) covering_holder(total_diameter,total_height,base_thickness,covering_holder_width,covering_holder_length);
     	}
+    	for (i = [12,24,36,48,60,72,84,96,108,120,132,144,156,204,216,228,240,252,264,276,288,300,312,324,336,348,360]) {
+    		rotate([0, 0, i]) 
+    			translate([0, total_diameter/2-fudge/4, total_height/2])
+					rotate([90, 0, 0]) 
+						cylinder(d=sensor_diameter+3,h=(total_height-base_thickness)/2+fudge/4);
+    	}
 	}
 	for (i=hole_array) {
 		translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, -1*fudge])
 		cylinder(d1 = 4*hole_diameter,d2=2*hole_diameter+fudge, h = base_thickness+2*fudge);
 	}
     for (i = [12,24,48,60,72,84,96,108,120,132,156,204,228,240,252,264,276,288,300,312,336,348,360]) {
-    	rotate([0, 0, i]) sensor(sensor_diameter,total_height,base_thickness);
+    	rotate([0, 0, i]) 
+    		sensor(sensor_diameter,total_height,base_thickness);
     }
     translate([0, 0, total_height]) 
     	cube([total_diameter,hole_diameter,hole_diameter],center = true);
@@ -52,8 +59,8 @@ difference() {
     		translate([0, 2*total_height+i[1], -1*fudge])	
     			cylinder(d = 3*hole_diameter, h = base_thickness+2*fudge);
     
-    rotate([0,0,90]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " evolucean.com", 5, 90);
-	rotate([0,0,270]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " lubolab.com", 5, 75);
+    //rotate([0,0,90]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " evolucean.com", 5, 90);
+	//rotate([0,0,270]) translate([0,0,total_height-fudge]) revolve_text((total_diameter-(total_height-base_thickness))/2+fudge, " lubolab.com", 5, 75);
     }
     translate([0, -50, 0]) 
     	cube([30,50,40],center = true);
@@ -72,8 +79,10 @@ module sensor(sensor_diameter,total_height,base_thickness) {
 	translate([0, total_diameter/2+fudge, total_height/2])
 		rotate([90, 0, 0]) 
 			union() {
-			cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/2, h = (total_height-base_thickness)/2+2*fudge);
-			//fillet_cylinder((sensor_diameter-fudge/2)/2,(total_height-base_thickness)/2+2*fudge,4,3);
+			scale([1.05, 0.95, 1])
+				cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/2, h = (total_height-base_thickness)/2+2*fudge);
+			translate([0,10,0])
+				cube([2*covering_holder_width,total_height,19],center = true);
 		   }
 }
 

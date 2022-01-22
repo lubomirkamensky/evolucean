@@ -1,4 +1,4 @@
-cover_total_height = 45;
+cover_total_height = 44;
 cover_total_diameter = 150;
 rate = cover_total_height/(cover_total_diameter*0.3);
 cylinder_height = cover_total_height*rate;
@@ -10,7 +10,8 @@ difference() {  //making the holes through the perimeter and the cover holders
 	union() {   //adding the cover holders
 		difference() { // making the basic cover body
 			cover_shape(cylinder_height,cover_total_diameter);
-			translate([0,0,-2.6]) cover_shape(cylinder_height-2.5,cover_total_diameter-2.5);
+			translate([0,0,-2.6]) 
+				cover_shape(cylinder_height-2.5,cover_total_diameter-2.5);
 			rotate([90,0,0])  
 				scale([1, rate, 1])
 					cylinder(d=(2*cylinder_height)-4,h=cover_total_diameter,center = true);
@@ -29,9 +30,10 @@ difference() {  //making the holes through the perimeter and the cover holders
     			translate([0,130/2,2])
     				rotate([90, 0, 0])
     					difference() {
-    							cylinder(d=9,h=7,center=true); //holder grip
+    							cylinder(d=11,h=7,center=true); //holder grip
     						}
     	}
+
 	}
 	for (i = [36,144,216,324]) {
 		rotate([0, 0, i]) 
@@ -39,13 +41,16 @@ difference() {  //making the holes through the perimeter and the cover holders
 				rotate([90, 0, 0])
 					cylinder(d=6,h=7+fudge,center=true); //hole in holder grip
 	}
+	translate([0,0,-24])
+  	cylinder(d=140,h=50,center=true); //cutting the holder grip a bit
+
 	for (i = [48,60,72,84,96,108,120,132,228,240,252,264,276,288,300,312]) {
 		rotate([0, 0, i]) 
 			translate([0,130/2,2])
 				rotate([90, 0, 0])
 					cylinder(d=10,h=50,center=true); //holes through the perimeter
 	}
-	translate([-100,50,0]) cube([100,95,50],center=true); //hole for the power and video cables
+	translate([-100,50,0]) cube([100,95,44],center=true); //hole for the power and video cables
 }
 cover_shape(cylinder_height,cover_total_diameter);
 }
