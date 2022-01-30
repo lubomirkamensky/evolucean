@@ -34,7 +34,7 @@ difference() {
     		rotate([0, 0, i]) 
     			translate([0, total_diameter/2-fudge/4, total_height/2])
 					rotate([90, 0, 0]) 
-						cylinder(d=sensor_diameter+3,h=(total_height-base_thickness)/2+fudge/4);
+						cylinder(d1=sensor_diameter+4,d2=sensor_diameter+3,h=(total_height-base_thickness)/2+fudge/4);
     	}
 	}
 	for (i=hole_array) {
@@ -80,7 +80,7 @@ module sensor(sensor_diameter,total_height,base_thickness) {
 		rotate([90, 0, 0]) 
 			union() {
 			scale([1.05, 0.95, 1])
-				cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/2, h = (total_height-base_thickness)/2+2*fudge);
+				cylinder(d1 = sensor_diameter+fudge/2,d2 = sensor_diameter-fudge/4, h = (total_height-base_thickness)/2+2*fudge);
 			translate([0,10,0])
 				cube([2*covering_holder_width,total_height,19],center = true);
 		   }

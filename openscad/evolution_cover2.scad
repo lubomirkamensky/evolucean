@@ -30,7 +30,7 @@ difference() {  //making the holes through the perimeter and the cover holders
     			translate([0,130/2,2])
     				rotate([90, 0, 0])
     					difference() {
-    							cylinder(d=11,h=7,center=true); //holder grip
+    							cylinder(d=10,h=7,center=true); //holder grip
     						}
     	}
 
@@ -51,6 +51,7 @@ difference() {  //making the holes through the perimeter and the cover holders
 					cylinder(d=10,h=50,center=true); //holes through the perimeter
 	}
 	translate([-100,50,0]) cube([100,95,44],center=true); //hole for the power and video cables
+	//translate([0,60,0]) cube([20,2,100],center=true); //hole for camera cable
 }
 cover_shape(cylinder_height,cover_total_diameter);
 }
