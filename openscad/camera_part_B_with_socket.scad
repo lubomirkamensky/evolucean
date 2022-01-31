@@ -22,19 +22,19 @@ union() {
             cube([25,20,10],center=true);   
 
         }
-        translate([0,0.5,8])
+        translate([0,0.3,8])
             cube([9,9,16],center=true);    
         translate([0,12,-8])
             cube([20,5,26],center=true);    
     }   
-    translate([25/2+0.3,-2,3+fudge/2])
+    translate([25/2-0.3,-2,3+fudge/2])
         cube([1,23+fudge,1],center=true);   
     translate([-25/2+0.3,-2,3+fudge/2])
         cube([1,23+fudge,1],center=true);   
 
-    translate([25/2+0.3,-2,0.7+fudge/2])
+    translate([25/2-0.3,-2,0.8+fudge/2])
         cube([1,23+fudge,1],center=true);   
-    translate([-25/2+0.3,-2,0.7+fudge/2])
+    translate([-25/2+0.3,-2,0.8+fudge/2])
         cube([1,23+fudge,1],center=true);   
 rotate([180,0,0]) translate([0,3,7]) socket();
 }
