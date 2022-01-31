@@ -60,7 +60,7 @@ difference() {  //making the holes through the perimeter and the cover holders
     }
     translate([-100,50,0]) cube([100,95,44],center=true); //hole for the power and video cables
     translate([0,-55,0]) cube([20,2,100],center=true); //hole for camera cable
-    translate([-10,-74,0]) difference() {
+    translate([-10,-74,0]) difference() {  //hole for camera cable
             cylinder(d=40,h=100,center=true);
             cylinder(d=36,h=101,center=true);
             translate([25,0,0]) cube([50,50,100],center=true);
@@ -89,7 +89,7 @@ module cover_shape(cylinder_height,cover_total_diameter) {
     translate([0, 0, cover_total_diameter/2]) 
         cube(cover_total_diameter, center = true);  //keep just the upper half of the model
     }
-translate([0,-45,44]) scale([1.5, 1, 1/5]) sphere(d=45);
+translate([0,-45,44]) scale([1.25, 1, 1/4.3]) sphere(d=40);
 }
 }
 
