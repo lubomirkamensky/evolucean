@@ -73,7 +73,7 @@ difference() {  //making the holes through the perimeter and the cover holders
 }
 cover_shape(cylinder_height,cover_total_diameter);
 }
-translate([0,-45,30.5]) ball(); //ball for camera joint
+translate([0,-45,32]) ball(); //ball for camera joint
 
 module cover_shape(cylinder_height,cover_total_diameter) {
     difference() {
