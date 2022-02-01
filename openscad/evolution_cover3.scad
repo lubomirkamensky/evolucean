@@ -20,9 +20,14 @@ difference() {  //making the holes through the perimeter and the cover holders
             cover_shape(cylinder_height,cover_total_diameter);
             translate([0,0,-2.6]) 
                 cover_shape(cylinder_height-2.5,cover_total_diameter-2.5);
+            difference() {
             rotate([90,0,0])  
                 scale([1, rate, 1])
-                    cylinder(d=(2*cylinder_height)-11,h=cover_total_diameter,center = true);
+                    cylinder(d=(2*cylinder_height)-4,h=cover_total_diameter,center = true);
+            translate([0,-45,44]) 
+                scale([1, 4/5, 1/3]) 
+                    sphere(d=70,center=true);  //hole for camera
+            }
         }
         for (i = [36,144,216,324]) {
             rotate([0, 0, i]) 
@@ -68,7 +73,7 @@ difference() {  //making the holes through the perimeter and the cover holders
 }
 cover_shape(cylinder_height,cover_total_diameter);
 }
-translate([0,-45,40]) ball();
+translate([0,-45,36]) ball(); //ball for camera joint
 
 module cover_shape(cylinder_height,cover_total_diameter) {
     difference() {
@@ -89,7 +94,7 @@ module cover_shape(cylinder_height,cover_total_diameter) {
     translate([0, 0, cover_total_diameter/2]) 
         cube(cover_total_diameter, center = true);  //keep just the upper half of the model
     }
-translate([0,-45,44]) scale([1.25, 1, 1/4.3]) sphere(d=40);
+translate([0,-45,44]) scale([1, 4/5, 1/3]) sphere(d=55,center=true);  //hole for camera
 }
 }
 
