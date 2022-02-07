@@ -36,6 +36,11 @@ difference() {
 					rotate([90, 0, 0]) 
 						cylinder(d1=sensor_diameter+4,d2=sensor_diameter+3,h=(total_height-base_thickness)/2+fudge/4);
     	}
+
+    	difference(){
+    		cylinder(d=total_diameter-22,h=base_thickness+3.5);
+    		cylinder(d=total_diameter-26,h=base_thickness+3+fudge);
+    	}
 	}
 	for (i=hole_array) {
 		translate([i[0]*hole_short_distance/2, i[1]*hole_long_distance/2-10, -1*fudge])

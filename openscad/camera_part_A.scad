@@ -22,9 +22,9 @@ union() {
 	translate([-25/2+fudge/2,-2,3+fudge/2])
 		cube([1,23+fudge,1],center=true);	
 
-	translate([25/2-fudge/2,-2,0.8+fudge/2])
+	translate([25/2-fudge/2,-2,0.9+fudge/2])
 		cube([1,23+fudge,1],center=true);	
-	translate([-25/2+fudge/2,-2,0.8+fudge/2])
+	translate([-25/2+fudge/2,-2,0.9+fudge/2])
 		cube([1,23+fudge,1],center=true);	
 }
 translate([0,-23,0])

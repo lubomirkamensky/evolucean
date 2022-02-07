@@ -54,8 +54,8 @@ difference() {  //making the holes through the perimeter and the cover holders
                 rotate([90, 0, 0])
                     cylinder(d=6,h=7+fudge,center=true); //hole in holder grip
     }
-    translate([0,0,-24])
-    cylinder(d=140,h=50,center=true); //cutting the holder grip a bit
+    //translate([0,0,-24])
+    //cylinder(d=140,h=50,center=true); //cutting the holder grip a bit
 
     for (i = [48,60,72,84,96,108,120,132,228,240,252,264,276,288,300,312]) {
         rotate([0, 0, i]) 
@@ -64,18 +64,18 @@ difference() {  //making the holes through the perimeter and the cover holders
                     cylinder(d=10,h=50,center=true); //holes through the perimeter
     }
     translate([-100,50,0]) cube([100,95,44],center=true); //hole for the power and video cables
-    translate([0,-25,0]) cube([20,2,100],center=true); //hole for camera cable
-    translate([-10,-44,0]) difference() {  //hole for camera cable
+    translate([0,-25+18,0]) cube([20,2,100],center=true); //hole for camera cable
+    translate([-10,-44+18,0]) difference() {  //hole for camera cable
             cylinder(d=40,h=100,center=true);
             cylinder(d=36,h=101,center=true);
             translate([25,0,0]) cube([50,50,100],center=true);
             translate([0,-25,0]) cube([50,50,100],center=true);
     }
-    translate([-29,-60,0]) cube([2,32,100],center=true); //hole for camera cable
+    translate([-29,-60+10,0]) cube([2,48,100],center=true); //hole for camera cable
 }
 cover_shape(cylinder_height,cover_total_diameter);
 }
-translate([0,3,32]) ball(); //ball for camera joint
+translate([0,3,31]) ball(); //ball for camera joint
 
 module cover_shape(cylinder_height,cover_total_diameter) {
     difference() {
