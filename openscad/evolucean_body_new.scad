@@ -33,36 +33,36 @@ difference() {
     		rotate([0, 0, i]) covering_holder(total_diameter,total_height,base_thickness,covering_holder_width,covering_holder_length);
     	}
 
+
     	for (i = [12,24,48,60,72,84,96,108,120,132,156,204,228,240,252,264,276,288,300,312,336,348,360]) {
     		rotate([0, 0, i]) 
-    			translate([0, total_diameter/2, 4])
+    			translate([0, total_diameter/2-4, 4])
 					rotate([90, 0, 0]) 
 						difference() {
-							cube([2,6,8],center = true);
-							cube([3,2,4],center = true);
+							cube([4,6,12],center = true);
+							cube([5,2,4],center = true);
 						}
     	}
 
-    	for (i = [12,24,48,60,72,84,96,108,120,132,156,204,228,240,252,264,276,288,300,312,324,336,348,360]) {
+
+    	for (i = [12,24,48,60,72,84,96,108,120,132,156,204,228,240,252,264,276,288,300,312,336,348,360]) {
     		rotate([0, 0, i]) 
-    			translate([0, total_diameter/2+20, 4])
+    			translate([0, total_diameter/2+32.5, 3])
 					rotate([90, 0, 0]) 
 						difference() {
-							cube([2,6,8],center = true);
-							cube([3,2,4],center = true);
+							cube([6,6,12],center = true);
+							cube([8,2,6],center = true);
 						}
     	}
 
-        for (i = [18,42,66,90,114,138,198,222,234,270,294,318,342]) {
+        for (i = [18,42,66,90,114,138,162,198,222,270,294,318,342]) {
         	rotate([0, 0, i]) translate([0,83,0]) rotate([320, 0, 0])  ball(stem_length = 18); //ball
        }
-        for (i = [30,54,78,102,126,150,162,210,282,306,330]) {
+        for (i = [30,54,78,102,126,150,210,234,282,306,330]) {
         	rotate([0, 0, i]) translate([0,83,0]) rotate([320, 0, 0])  ball(stem_length = 15); //ball
        }
 
-        for (i = [18,66,90,114,162,198,270,294,342]) {
-        	rotate([0, 0, i]) translate([0,65,0]) rotate([320, 0, 0])  ball(stem_length = 15); //ball
-       }
+
 
 	}
 	for (i=hole_array) {
@@ -80,7 +80,7 @@ difference() {
     for (i = [78,282]) {
     	rotate([0, 0, i])
     		translate([0, 72, -1*fudge])	
-    			cylinder(d = hole_diameter, h = base_thickness+2*fudge);
+    			cylinder(d = 4, h = base_thickness+2*fudge);
     
     }
     translate([0, -50, 0]) 
