@@ -4,7 +4,6 @@ use <evolucean_socket.scad>
 fudge = 1;
 $fn = 32;
 
-rotate([180,0,0])
 union() {
 	rotate([45,0,0]) difference() {
 		ball(stem_length = 7);
