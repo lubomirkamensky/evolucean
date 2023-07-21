@@ -81,6 +81,19 @@ difference() {
     translate([0, 0, -2]) 
     	cube([200,200,4],center = true);
 
+
+        for (i = [60,108,132,156,204,228,300]) {
+        	rotate([0, 0, i]) translate([0,60,0]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+
+        for (i = [18,42,66,90,114,138,162,198,222,270,294,318,342]) {
+        	rotate([0, 0, i]) translate([0,83,0]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+        for (i = [30,54,78,102,126,150,210,234,282,306,330]) {
+        	rotate([0, 0, i]) translate([0,83,0]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+
+
 }
 
 

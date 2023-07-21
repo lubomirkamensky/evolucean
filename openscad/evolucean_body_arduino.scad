@@ -36,6 +36,16 @@ difference() {
     }
 
 
+        	for (i = [72,108,156,180,204,252,288]) {
+        	rotate([0, 0, i]) translate([0,58,-1]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+	        for (i = [42,66,90,114,138,162,186,210,234,258,282,306,330]) {
+        	rotate([0, 0, i]) translate([0,78,-1]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+        for (i = [30,54,78,102,126,150,174,198,222,246,270,294,318]) {
+        	rotate([0, 0, i]) translate([0,78,-1]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true);
+       }
+
 
 }
 
