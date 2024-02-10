@@ -5,7 +5,7 @@ cover_total_diameter = 150;
 rate = cover_total_height/(cover_total_diameter*0.3);
 cylinder_height = cover_total_height*rate;
 fudge = 1;
-$fn = 128;
+$fn = 96;
 
 intersection() {  //cutting out everithing going over the cover shape perimeter
 difference() {  //making the holes through the perimeter and the cover holders
@@ -52,9 +52,9 @@ difference() {  //making the holes through the perimeter and the cover holders
     //cylinder(d=140,h=50,center=true); //cutting the holder grip a bit
 
 
-    translate([-100,50,0]) cube([100,210,44],center=true); //hole for the power and video cables
+    translate([-100,50,0]) cube([104,210,44],center=true); //hole for the power and video cables
 
-    translate([100,50,0]) cube([100,210,44],center=true); //hole for the power and video cables
+    translate([100,50,0]) cube([104,210,44],center=true); //hole for the power and video cables
 
 
     translate([0,-25+18,0]) cube([20,2,100],center=true); //hole for camera cable

@@ -1,6 +1,6 @@
 use <evolution_ball.scad>
 holder_diameter = 100;
-$fn = 96;
+$fn = 48;
 
 difference() {
 
@@ -8,7 +8,7 @@ difference() {
 	translate([100,100,22.5]) cube([150,150,50],center=true);
 	cylinder(d=4,h=20,center = true);
 	translate([0,0,7.5]) cylinder(d=16,h=15,center = true);
-    for (i = [24,72,96,360]) {
+    for (i = [24,72,96,120,144,168,360]) {
         rotate([0, 0, i]) translate([0,holder_diameter/2 - 10,4.0]) rotate([320, 0, 0])  cylinder(d=5,h=100,center = true); 
     }
 }
@@ -27,7 +27,7 @@ difference() {
     	}
 
 
-        	for (i = [24,72,96,360]) {
+        	for (i = [24,72,96,120,144,168,360]) {
         	rotate([0, 0, i]) translate([0,holder_diameter/2 - 10,4.0]) rotate([320, 0, 0])  evolucean_link(13,3); //ball
        }
 

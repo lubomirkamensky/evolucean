@@ -55,7 +55,7 @@ difference() {  //making the holes through the perimeter and the cover holders
 
     translate([100,50,0]) cube([100,210,44],center=true); //hole for the power and video cables
 
-
+    cylinder(d=40,h=150,center = true);
 
 
 
