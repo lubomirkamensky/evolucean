@@ -1052,7 +1052,6 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
     if args.show_config:
         import yaml
-        import os
 
         config_file = args.config_file
         config = {}
@@ -1085,7 +1084,6 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
     if args.show_models:
         import yaml
-        import os
 
         model_settings_file = args.model_settings_file
         models = []
