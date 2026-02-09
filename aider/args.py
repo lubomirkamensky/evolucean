@@ -695,6 +695,18 @@ def get_parser(default_config_files, git_root):
         help="Print the system prompts and exit (debug)",
         default=False,
     )
+    group.add_argument(
+        "--show-config",
+        action="store_true",
+        help="Print the current configuration and exit",
+        default=False,
+    )
+    group.add_argument(
+        "--show-models",
+        action="store_true",
+        help="Print available models and exit",
+        default=False,
+    )
 
     ##########
     group = parser.add_argument_group("Voice settings")

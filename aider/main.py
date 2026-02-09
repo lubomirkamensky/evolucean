@@ -1050,6 +1050,70 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         analytics.event("exit", reason="Showed prompts")
         return
 
+    if args.show_config:
+        import yaml
+        import os
+
+        config_file = args.config_file
+        config = {}
+
+        # Read config file
+        if config_file and os.path.exists(config_file):
+            with open(config_file, "r") as f:
+                config = yaml.safe_load(f) or {}
+
+        # Display current configuration
+        io.tool_output("=== Evolucean Configuration ===")
+        io.tool_output(f"Config file: {config_file}")
+        io.tool_output(f"Model: {args.model or 'default'}")
+        io.tool_output(f"API Base: {args.openai_api_base or 'default'}")
+        io.tool_output(f"Auto-commits: {args.auto_commits}")
+        io.tool_output(f"Gitignore: {args.gitignore}")
+        io.tool_output(f"Map tokens: {args.map_tokens}")
+        io.tool_output(f"Cache prompts: {args.cache_prompts}")
+        io.tool_output(f"Chat language: {args.chat_language}")
+        io.tool_output(f"Commit language: {args.commit_language}")
+
+        # Show custom env variables
+        if args.set_env:
+            io.tool_output(f"\nEnvironment variables:")
+            for env_var in args.set_env:
+                io.tool_output(f"  {env_var}")
+
+        analytics.event("exit", reason="Showed config")
+        return
+
+    if args.show_models:
+        import yaml
+        import os
+
+        model_settings_file = args.model_settings_file
+        models = []
+
+        # Read model settings
+        if model_settings_file and os.path.exists(model_settings_file):
+            with open(model_settings_file, "r") as f:
+                model_data = yaml.safe_load(f) or []
+                for model in model_data:
+                    models.append(f"  - {model.get('name', 'unknown')}: {model.get('description', '')}")
+
+        # Display available models
+        io.tool_output("=== Available Models ===")
+        if models:
+            io.tool_output("\nCustom models:")
+            for model in models:
+                io.tool_output(model)
+        else:
+            io.tool_output("No custom models defined.")
+
+        io.tool_output("\nStandard models (anthropic):")
+        io.tool_output("  - claude-3-7-sonnet-20250219 (Sonnet 4)")
+        io.tool_output("  - claude-3-5-haiku-20241022 (Haiku)")
+        io.tool_output("  - claude-opus-4-20250514 (Opus 4)")
+
+        analytics.event("exit", reason="Showed models")
+        return
+
     if args.lint:
         coder.commands.cmd_lint(fnames=fnames)
 
