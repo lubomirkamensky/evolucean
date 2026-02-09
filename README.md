@@ -1,5 +1,5 @@
 <p align="center">
-    <h1>Evolution</h1>
+    <h1>Evolucean</h1>
     <i>AI Pair Programming with Learning Workflows</i>
 </p>
 
@@ -8,7 +8,7 @@ Fork of <a href="https://github.com/Aider-AI/aider">Aider</a> - AI pair programm
 </p>
 
 <p align="center">
-Evolution rozšiřuje Aider o learning workflows: WOOP, Knowledge Base, Blueprinting a Reflexe
+Evolucean rozšiřuje Aider o learning workflows: WOOP, Knowledge Base, Blueprinting a Reflexe
 </p>
 
 ---
@@ -23,7 +23,7 @@ Evolution rozšiřuje Aider o learning workflows: WOOP, Knowledge Base, Blueprin
 - IDE integration
 - Linting & testing
 
-### 🆕 Evolution Learning Features
+### 🆕 Evolucean Learning Features
 
 #### WOOP Workflow
 - **Wish → Outcome → Obstacle → Plan**
@@ -85,7 +85,7 @@ auto-commits: false
 ## Usage
 
 ```bash
-# Start Evolution
+# Start Evolucean
 evolution
 
 # S konkrétním modelem
@@ -101,7 +101,7 @@ evolution --wiki-sync
 ## Architecture
 
 ```
-Evolution = Aider Core + Learning Layer
+Evolucean = Aider Core + Learning Layer
 ├── aider/           # Core Aider functionality
 ├── evolution/       # Naše přidaná hodnota
 │   ├── workflows/   # WOOP, Blueprinting, Reflekse
@@ -122,4 +122,4 @@ Apache 2.0 (stejně jako Aider)
 
 ## Acknowledgments
 
-Díky **Aider-AI** za skvělý foundation! Evolution je fork s učícími se workflow pro osobní růst.
+Díky **Aider-AI** za skvělý foundation! Evolucean je fork s učícími se workflow pro osobní růst.
