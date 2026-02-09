@@ -1051,19 +1051,8 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         return
 
     if args.show_config:
-        import yaml
-
-        config_file = args.config_file
-        config = {}
-
-        # Read config file
-        if config_file and os.path.exists(config_file):
-            with open(config_file, "r") as f:
-                config = yaml.safe_load(f) or {}
-
         # Display current configuration
         io.tool_output("=== Evolucean Configuration ===")
-        io.tool_output(f"Config file: {config_file}")
         io.tool_output(f"Model: {args.model or 'default'}")
         io.tool_output(f"API Base: {args.openai_api_base or 'default'}")
         io.tool_output(f"Auto-commits: {args.auto_commits}")
@@ -1072,6 +1061,11 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         io.tool_output(f"Cache prompts: {args.cache_prompts}")
         io.tool_output(f"Chat language: {args.chat_language}")
         io.tool_output(f"Commit language: {args.commit_language}")
+
+        # Show config files being used
+        io.tool_output(f"\nConfig files searched:")
+        io.tool_output(f"  - {Path.cwd() / '.aider.conf.yml'}")
+        io.tool_output(f"  - {Path.home() / '.aider.conf.yml'}")
 
         # Show custom env variables
         if args.set_env:
@@ -1086,20 +1080,20 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         import yaml
 
         model_settings_file = args.model_settings_file
-        models = []
+        available_models = []
 
         # Read model settings
         if model_settings_file and os.path.exists(model_settings_file):
             with open(model_settings_file, "r") as f:
                 model_data = yaml.safe_load(f) or []
                 for model in model_data:
-                    models.append(f"  - {model.get('name', 'unknown')}: {model.get('description', '')}")
+                    available_models.append(f"  - {model.get('name', 'unknown')}: {model.get('description', '')}")
 
         # Display available models
         io.tool_output("=== Available Models ===")
-        if models:
+        if available_models:
             io.tool_output("\nCustom models:")
-            for model in models:
+            for model in available_models:
                 io.tool_output(model)
         else:
             io.tool_output("No custom models defined.")
